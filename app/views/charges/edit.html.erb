@@ -1,0 +1,11 @@
+<%= semantic_form_for @charge do |f| %>
+  <h1><%= @charge.description %></h1>
+  <h2><%= @charge.transaction_date %></h2>
+  <h3><%= number_to_currency(@charge.amount) %></h3>
+  <div class="form-group">
+    <%= f.input :category, as: :select, collection: @categories.pluck(:name, :id) %> 
+  </div>
+  <%= f.actions do %>
+    <%= f.action :submit, as: :button %>
+  <% end %>
+<% end %>
