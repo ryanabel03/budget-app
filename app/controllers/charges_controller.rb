@@ -1,4 +1,8 @@
 class ChargesController < ApplicationController
+  def index
+    puts params.inspect
+    @charges = Charge.order(transaction_date: :desc).page params[:page]
+  end
   def import
     if request.post?
       ChargeRepository.parse_and_create_charges(params[:charges])

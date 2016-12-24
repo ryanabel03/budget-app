@@ -1,0 +1,23 @@
+.navbar-light {
+  color: $brand-primary;
+}
+
+.nav-container {
+  &_outer {
+    background: white;
+  }
+}
+
+.nav-item {
+  cursor: pointer;
+}
+
+.navbar {
+  &-brand {
+    background-image: url(asset-path('abel_family_logo.png'));
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    width: 88px;
+    height: 38px;
+  }
+}

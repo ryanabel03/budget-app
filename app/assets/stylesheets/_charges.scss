@@ -1,0 +1,16 @@
+.charges-years {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: inline;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    border-right: 1px solid $brand-secondary;
+  }
+
+  li:first-child {
+    border-left: 1px solid $brand-secondary;
+  }
+}

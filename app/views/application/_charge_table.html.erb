@@ -1,0 +1,17 @@
+<table class="table table-striped">
+  <thead>
+    <th>Date</th>
+    <th>Amount</th>
+    <th>Category</th>
+  </thead>
+  <tbody>
+    <% charges.each do |charge| %>
+      <tr>
+        <td><%= charge.transaction_date %></td>
+        <td><%= number_to_currency(charge.amount) %></td>
+        <td><%= charge.category.try(:name) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

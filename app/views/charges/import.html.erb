@@ -1,4 +1,5 @@
-<%= form_tag do %>
-  <%= text_area_tag 'charges' %>
-  <%= submit_tag %>
-<% end %>
+<h1>Import New Charges</h1>
+  <%= form_tag do %>
+    <%= text_area_tag 'charges', nil, rows: 10, cols: 50 %>
+    <%= submit_tag 'Import', class: 'd-block btn btn-primary' %>
+  <% end %>

@@ -1,4 +1,21 @@
+@import 'variables';
 @import "bootstrap";
 @import "bootstrap-custom";
 @import "form";
 @import 'typography';
+@import 'nav';
+
+h1, h2, h3, h4, h5, button, .btn, p, table {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  color: $brand-primary;
+}
+
+body {
+  background: #f8f8f8;
+}
+
+@import 'charges';
