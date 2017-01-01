@@ -1,14 +1,19 @@
 <h1>Report: <%= @year %></h1>
 <table class="table table-striped">
   <thead>
-    <% @charge_set.categories.each do |category| %>
-      <th><%= category.name %></th>
-    <% end %>
-    <th></th>
-    <th></th>
+    <th>Category</th>
+    <th>Spent</th>
+    <th>Budgeted</th>
+    <th>Difference</th>
   </thead>
   <tbody>
-    <%= @charge_set.by_category.each do |ch
+    <% @charge_sets.each do |set| %>
+      <tr>
+        <td><%= link_to set.category_name, report_category_year_path(year: @year, category: set.category_name) %></td>
+        <td><%= number_to_currency(set.spent) %></td>
+        <td><%= number_to_currency set.budgeted %></td>
+        <td class="<%= 'alert-danger' if set.over_budget? %>"><%= number_to_currency set.difference %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
-
