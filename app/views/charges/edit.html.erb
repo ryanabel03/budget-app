@@ -2,11 +2,14 @@
   <h1><%= @charge.description %></h1>
   <h2><%= @charge.transaction_date %></h2>
   <h3><%= number_to_currency(@charge.amount) %></h3>
-  <div class="form-group">
-    <%= f.input :category, as: :select, collection: @categories.pluck(:name, :id) %> 
+  <div class="form-group category-choice">
+    <%= f.input :category, as: :radio, label: false, collection: @categories.pluck(:name, :id) %> 
   </div>
   <%= f.actions do %>
     <%= f.action :submit, as: :button, button_html: {class: 'btn btn-primary'} %>
     <%= f.action :cancel, label: 'Skip', as: :link, url: charge_path(@charge), button_html: {method: :delete, class: "btn btn-secondary"} %>
   <% end %>
 <% end %>
+<script>
+  choiceListener();
+</script>
