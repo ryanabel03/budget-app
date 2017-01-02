@@ -2,8 +2,3 @@
 <%= render partial: 'charge_table', locals: {charges: @charges} %>
 <%= paginate @charges %>
 
-<ul class="charges-years">
-  <li><%= link_to '2016', report_year_path(year: 2016) %></li>
-  <li><%= link_to '2015', report_year_path(year: 2015) %></li>
-  <li><%= link_to '2014', report_year_path(year: 2014) %></li>
-</ul>

@@ -1,13 +1,11 @@
 class ChargesController < ApplicationController
   def index
-    puts params.inspect
     @charges = Charge.order(transaction_date: :desc).page params[:page]
   end
   def import
     if request.post?
       ChargeRepository.parse_and_create_charges(params[:charges])
-      charge = ChargeRepository.next_unprocessed_charge
-      redirect_to edit_charge_path(charge)
+      go_to_next_or_home
     end
   end
 
@@ -20,7 +18,23 @@ class ChargesController < ApplicationController
     @charge = Charge.find(params[:id])
     permitted = params.require(:charge).permit(:category_id).merge(processed: true)
     @charge.update_attributes(permitted)
+    go_to_next_or_home
+  end
+
+  def destroy
+    @charge = Charge.find(params[:id])
+    @charge.destroy
+    go_to_next_or_home
+  end
+
+  private
+
+  def go_to_next_or_home
     nxt = ChargeRepository.next_unprocessed_charge
-    redirect_to edit_charge_path(nxt)
+    if nxt
+      redirect_to edit_charge_path(nxt)
+    else
+      redirect_to report_year_path(year: Date.today.year)
+    end
   end
 end

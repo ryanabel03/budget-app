@@ -1,5 +1,7 @@
-<h1>Report: <%= @year %></h1>
-<h2><%= @category.name %></h2>
+<h1>
+  <%= link_to(@year, report_year_path(year: @year)) %> > 
+  <%= @category.name %>
+</h1>
 <table class="table table-striped">
   <thead>
     <th>Month</th>
@@ -10,11 +12,17 @@
   <tbody>
     <% @months.keys.each do |month| %>
       <tr>
-        <td><%= month %></td>
+        <td><%= link_to month, report_category_month_path(year: @year, category: @category.name, month: @months[month][:index]) %></td>
         <td><%= number_to_currency(@months[month][:spent]) %></td>
         <td><%= number_to_currency(@category.limit) %></td>
         <td><%= number_to_currency(@category.limit - @months[month][:spent]) %></td>
       </tr>
     <% end %>
+    <tr class="total-row">
+      <td>Total</td>
+      <td><%= number_to_currency @charge_set.spent %></td>
+      <td><%= number_to_currency @charge_set.budgeted %></td>
+      <td><%= number_to_currency(@charge_set.budgeted - @charge_set.spent) %></td>
+    </tr>
   </tbody>
 </table>

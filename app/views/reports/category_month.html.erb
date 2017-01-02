@@ -1,0 +1,21 @@
+<h1>
+  <%= link_to(@year, report_year_path(year: @year)) %> >
+  <%= link_to @category.name, report_category_year_path(year: @year, category: @category.name) %> >
+  <%= @month_name %>
+</h1>
+<table class="table table-striped">
+  <thead>
+    <th>Date</th>
+    <th>Description</th>
+    <th>Amount</th>
+  </thead>
+  <tbody>
+    <% @charges.each do |charge| %>
+      <tr>
+        <td><%= charge.transaction_date %></td>
+        <td><%= charge.description %></td>
+        <td><%= number_to_currency charge.amount %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

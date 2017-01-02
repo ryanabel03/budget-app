@@ -1,4 +1,4 @@
-<h1>Report: <%= @year %></h1>
+<h1><%= @year %></h1>
 <table class="table table-striped">
   <thead>
     <th>Category</th>
@@ -15,5 +15,15 @@
         <td class="<%= 'alert-danger' if set.over_budget? %>"><%= number_to_currency set.difference %></td>
       </tr>
     <% end %>
+    <tr class="total-row">
+      <td>Total</td>
+      <td><%= number_to_currency @total_spent %></td>
+      <td><%= number_to_currency @total_budgeted %></td>
+      <td><%= number_to_currency(@total_budgeted - @total_spent) %></td>
+    </tr>
   </tbody>
 </table>
+
+<ul class="charges-years">
+  <li><%= link_to '2016', report_year_path(year: 2016) %></li>
+</ul>

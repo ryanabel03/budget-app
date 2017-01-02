@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   get 'reports/:year/category/:category',
     to: 'reports#category_year',
     as: 'report_category_year'
+
+  get 'reports/:year/category/:category/:month',
+    to: 'reports#category_month',
+    as: 'report_category_month'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

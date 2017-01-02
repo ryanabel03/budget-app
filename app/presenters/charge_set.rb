@@ -20,6 +20,7 @@ class ChargeSet
         memo[month_name][:spent] += charge.amount
       else
         memo[month_name] = {}
+        memo[month_name][:index] = charge.transaction_date.month
         memo[month_name][:spent] = charge.amount
       end
       memo
@@ -33,8 +34,7 @@ class ChargeSet
       latest_date = latest_charge.transaction_date
       oldest_date = oldest_charge.transaction_date
       months_between = (latest_date.year * 12 + latest_date.month) - (oldest_date.year * 12 + oldest_date.month)
-      months_between = 1 if months_between = 0
-      @category.limit * months_between
+      @category.limit + @category.limit * months_between
     else
       0
     end

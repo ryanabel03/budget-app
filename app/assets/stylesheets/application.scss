@@ -18,4 +18,23 @@ body {
   background: #f8f8f8;
 }
 
+tr.total-row {
+  border-top: 2px solid $brand-primary;
+  font-weight: bold;
+  td {
+    background-color: white;
+  }
+}
+
+.actions {
+  ol {
+    padding-left: 0;
+
+    li {
+      float: left;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
 @import 'charges';
