@@ -1,9 +1,8 @@
 class ChargeRepository
-  def self.parse_and_create_charges(charge_str)
-    charge_str.split("\n").each do |charge|
-      parts = /(\d+)\/(\d+)(.*?)(\d*\.\d+)/.match(charge)
-      date = Date.new(2016, parts[1].to_i, parts[2].to_i)
-      Charge.create!(transaction_date: date, description: parts[3], amount: parts[4])
+  def self.parse_and_create_charges(charge_arr)
+    charge_arr.each do |charge_row|
+      date = Date.strptime(charge_row[2], "%m/%d/%Y")
+      Charge.create!(transaction_date: date, description: charge_row[3].strip, amount: charge_row[4].to_f * -1)
     end
   end
 
