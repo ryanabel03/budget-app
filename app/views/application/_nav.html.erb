@@ -6,6 +6,11 @@
         <li class="nav-item">
           <%= link_to 'Import Charges', charges_import_path %>
         </li>
+        <% if Charge.unprocessed.count > 0 %>
+          <li class="nav-item">
+            <%= link_to 'Process Charges', edit_charge_path(Charge.unprocessed.first) %> 
+          </li>
+        <% end %>
         <li class="nav-item">
           <%= link_to 'Reports', report_year_path(year: Date.today.year) %>
         </li>
