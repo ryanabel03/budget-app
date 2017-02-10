@@ -5,9 +5,12 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: postgresql
+  encoding: unicode
+  username: abel 
+  password: abel 
+  host: "localhost"
+  port: 5433
 
 development:
   <<: *default
@@ -18,8 +21,10 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: abel_test 
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: abel_prod 
+  username: abel_prod 
+  password: <%= ENV['DATABASE_PASSWORD'] %>
