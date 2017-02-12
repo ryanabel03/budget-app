@@ -25,8 +25,7 @@ class ChargesController < ApplicationController
   end
 
   def destroy
-    @charge = Charge.find(params[:id])
-    @charge.destroy
+    Charge.destroy(params[:id])
     go_to_next_or_home
   end
 
