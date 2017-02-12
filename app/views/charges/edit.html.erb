@@ -7,6 +7,6 @@
   </div>
   <%= f.actions do %>
     <%= f.action :submit, as: :button, button_html: {class: 'btn btn-primary'} %>
-    <%= link_to 'Skip', charge_path(@charge), class: 'btn btn-secondary skip-charge', method: :delete %>
   <% end %>
+  <%= link_to 'Skip', charge_path(@charge), class: 'btn btn-secondary skip-charge', method: :delete %>
 <% end %>

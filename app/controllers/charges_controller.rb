@@ -5,9 +5,7 @@ class ChargesController < ApplicationController
   def import
     if request.post?
       raw_charges = CSV.read(params[:file].path, headers: true)
-      Charge.transaction do
-        ChargeRepository.parse_and_create_charges(raw_charges)
-      end
+      ChargeRepository.parse_and_create_charges(raw_charges)
       go_to_next_or_home
     end
   end
