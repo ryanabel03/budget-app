@@ -5,9 +5,9 @@ class ChargeRepository
       amount = charge_row[4].to_f * -1
       description = charge_row[3].strip
       charge = Charge.new(transaction_date: date, description: description, amount: amount)
-      puts "Charge info: #{date} - #{amount} - #{description}"
+      Rails.logger.error "Charge info: #{date} - #{amount} - #{description}"
       if !charge.valid?
-        puts "Could not create charge. #{date} - #{amount} - #{description}"
+        Rails.logger.error "Could not create charge. #{date} - #{amount} - #{description}"
       else
         charge.save!
       end
