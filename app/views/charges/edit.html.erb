@@ -1,7 +1,7 @@
 <%= semantic_form_for @charge do |f| %>
   <h1><%= @charge.description %></h1>
   <h2><%= @charge.transaction_date %></h2>
-  <h3><%= number_to_currency(@charge.amount) %></h3>
+  $<%= f.input :amount %>
   <div class="form-group category-choice">
     <%= f.input :category, as: :radio, label: false, collection: @categories.pluck(:name, :id) %> 
   </div>
