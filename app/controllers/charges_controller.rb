@@ -4,8 +4,14 @@ class ChargesController < ApplicationController
   end
   def import
     if request.post?
+      unless params[:file].present?
+        flash[:alert] = 'Please provide a file'
+        render :import
+        return
+      end
+      two_digit = params[:two_digit_year].present? && params[:two_digit_year] == 'yes'
       raw_charges = CSV.read(params[:file].path, headers: true)
-      ChargeRepository.parse_and_create_charges(raw_charges)
+      ChargeRepository.parse_and_create_charges(raw_charges, two_digit_year: two_digit)
       go_to_next_or_home
     end
   end

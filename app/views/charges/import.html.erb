@@ -1,5 +1,11 @@
 <h1>Import New Charges</h1>
   <%= form_tag({action: :import}, multipart: true) do %>
-    <%= file_field_tag :file %>
+    <div class="form-group">
+      <%= label_tag 'two_digit_year', 'Two Digit Year?' %>
+      <%= check_box_tag :two_digit_year, 'yes', false %>
+    </div>
+    <div class="form-group">
+      <%= file_field_tag :file %>
+    </div>
     <%= submit_tag 'Import', class: 'd-block btn btn-primary charges-import' %>
   <% end %>
