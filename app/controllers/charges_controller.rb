@@ -23,7 +23,7 @@ class ChargesController < ApplicationController
 
   def update
     @charge = Charge.find(params[:id])
-    permitted = params.require(:charge).permit(:category_id).merge(processed: true)
+    permitted = params.require(:charge).permit(:category_id, :amount).merge(processed: true)
     @charge.update_attributes(permitted)
     go_to_next_or_home
   end
