@@ -1,6 +1,10 @@
 <h1>Import New Charges</h1>
   <%= form_tag({action: :import}, multipart: true) do %>
     <div class="form-group">
+      <%= label_tag "imported_by", "Who's Importing?" %>
+      <%= select_tag "imported_by", options_for_select(["Erin", "Ryan"]) %>
+    </div>
+    <div class="form-group">
       <%= label_tag 'two_digit_year', 'Two Digit Year?' %>
       <%= check_box_tag :two_digit_year, 'yes', false %>
     </div>

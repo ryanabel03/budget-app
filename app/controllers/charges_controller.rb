@@ -11,7 +11,7 @@ class ChargesController < ApplicationController
       end
       two_digit = params[:two_digit_year].present? && params[:two_digit_year] == 'yes'
       raw_charges = CSV.read(params[:file].path, headers: true)
-      ChargeRepository.parse_and_create_charges(raw_charges, two_digit_year: two_digit)
+      ChargeRepository.parse_and_create_charges(raw_charges, two_digit_year: two_digit, importer: params[:imported_by])
       go_to_next_or_home
     end
   end
