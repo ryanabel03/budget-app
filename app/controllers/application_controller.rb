@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
 
   def internal_error(e)
+    puts e.message
     puts e.backtrace
     raise e
   end
