@@ -7,8 +7,8 @@ class ChargeRepository
                '%Y'
              end
       date = Date.strptime(charge_row[1], "%m/%d/#{year}")
-      amount = charge_row[3].to_f * -1
-      description = charge_row[2].strip
+      amount = charge_row[4].to_f * -1
+      description = charge_row[3].strip
       Charge.create!(transaction_date: date,
                      description: description,
                      for: importer,
